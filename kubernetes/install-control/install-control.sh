@@ -1,3 +1,4 @@
+#!/bin/bash
 #
 # Licensed to the Apache Software Foundation (ASF) under one
 # or more contributor license agreements.  See the NOTICE file
@@ -17,12 +18,5 @@
 # under the License.
 #
 
-header:
-  license:
-    spdx-id: Apache-2.0
-    copyright-owner: Apache Software Foundation
-  paths-ignore:
-    - '**/*.md'
-    - '**/*.bf'
-    - 'LICENSE'
-    - '.gitignore'
+IP=`ip addr show eth0|grep -w inet|awk '{print $2}'|awk -F '/' '{print $1}'`
+kubeadm init --pod-network-cidr=10.244.0.0/16 --control-plane-endpoint "$IP:6443" --upload-certs

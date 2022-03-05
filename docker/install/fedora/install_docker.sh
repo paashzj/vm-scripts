@@ -1,3 +1,4 @@
+#!/bin/bash
 #
 # Licensed to the Apache Software Foundation (ASF) under one
 # or more contributor license agreements.  See the NOTICE file
@@ -17,12 +18,7 @@
 # under the License.
 #
 
-header:
-  license:
-    spdx-id: Apache-2.0
-    copyright-owner: Apache Software Foundation
-  paths-ignore:
-    - '**/*.md'
-    - '**/*.bf'
-    - 'LICENSE'
-    - '.gitignore'
+dnf -y install dnf-plugins-core
+dnf config-manager --add-repo https://download.docker.com/linux/fedora/docker-ce.repo
+dnf install docker-ce docker-ce-cli containerd.io
+systemctl start docker

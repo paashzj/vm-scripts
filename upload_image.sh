@@ -1,3 +1,4 @@
+#!/bin/bash
 #
 # Licensed to the Apache Software Foundation (ASF) under one
 # or more contributor license agreements.  See the NOTICE file
@@ -17,12 +18,8 @@
 # under the License.
 #
 
-header:
-  license:
-    spdx-id: Apache-2.0
-    copyright-owner: Apache Software Foundation
-  paths-ignore:
-    - '**/*.md'
-    - '**/*.bf'
-    - 'LICENSE'
-    - '.gitignore'
+wget https://gosspublic.alicdn.com/ossutil/1.7.9/ossutil64
+chmod +x ossutil64
+./ossutil64 -i $ALI_AK -k $ALI_SK -e oss-cn-hongkong.aliyuncs.com cp ubuntu-docker-amd64.img  oss://$BUCKET_NAME/
+./ossutil64 -i $ALI_AK -k $ALI_SK -e oss-cn-hongkong.aliyuncs.com cp ubuntu-minikube-amd64.img  oss://$BUCKET_NAME/
+./ossutil64 -i $ALI_AK -k $ALI_SK -e oss-cn-hongkong.aliyuncs.com cp ubuntu-dapr.img  oss://$BUCKET_NAME/
